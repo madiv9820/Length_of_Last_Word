@@ -3,7 +3,7 @@ from timeout_decorator import timeout  # ⏱️ Enforce time limit per test
 from source.c.solution import cSolution
 
 # 🏛️ Unit tests for the C implementation of Length of Last Word
-class test_cpp_Solution(unittest.TestCase):
+class test_c_Solution(unittest.TestCase):
 
     def setUp(self):
         """
