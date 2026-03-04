@@ -52,5 +52,4 @@ Where `n` is the length of the string.
 - Empty string → returns 0
 - String with only spaces → returns 0
 - Single word → counts correctly
-
 ---
