@@ -1,57 +1,56 @@
-# [Length of Last Word 📝](https://leetcode.com/problems/length-of-last-word/description/?envType=study-plan-v2&envId=top-interview-150)
+# 📌 Length of Last Word – Optimal Reverse Traversal Approach
 
-### 📌 Problem Summary
+### 🧠 Problem Statement
+Given a string `s` containing words and spaces, return the **length of the last word** in the string.
 
-You are given a string `s` that contains:
-- English letters (`a–z`, `A–Z`)
-- Spaces `" "`
+A **word** is a maximal substring consisting of non-space characters.
 
-Your task is to return the **length of the last word** in the string.
+### 💡 Approach – Reverse Traversal
 
-### 🧠 What is a Word?
+Instead of storing all words, this approach **traverses the string from the end** to efficiently count the last word:
 
-A **word** is defined as: *A continuous sequence of non-space characters.*
+1. 🔁 Start from the last character of the string.
+2. ⛔ Skip any trailing spaces.
+3. 🔤 Count characters until a space or the start of the string is reached.
+4. 📦 Return the count as the length of the last word.
 
-In simple terms:
-- Words are separated by spaces.
-- A word does not contain any spaces.
-- The string is guaranteed to have at least one word.
+This method uses **O(1) extra space** and **O(n) time**, making it highly efficient for long strings.
 
-### 🔍 What You Need to Do
-1. Look at the given string.
-2. Identify the last word (the final group of letters).
-3. Count how many characters it has.
-4. Return that number.
+### 🛠 Algorithm Steps
+1. Initialize **`lastWordLength = 0`**.
+2. Set **`currentIndex`** to the last character of the string.
+3. Skip trailing spaces:
+    ```
+    while currentIndex >= 0 and s[currentIndex] == ' ':
+        currentIndex -= 1
+    ```
+4. Count the characters of the last word:
+    ```
+    while currentIndex >= 0 and s[currentIndex] != ' ':
+        lastWordLength += 1
+        currentIndex -= 1
+    ```
+5. Return **`lastWordLength`**.
 
-**⚠️ Important:**
-- The string may contain **extra spaces at the beginning or end**.
-- There may be **multiple spaces between words**.
-- You should ignore unnecessary spaces.
+### 🧮 Complexity Analysis
+| **Complexity** | **Value** |
+| ---------- | ----- |
+| ⏱ Time     | O(n)  |
+| 📦 Space   | O(1)  |
 
-### 📘 Examples
-- **Example 1:** <br>
-**Input:** **`s = "Hello World"`** <br>
-**Output:** **`5`** <br>
-**Explanation:** The last word is **`"World"`** with length 5.
+Where `n` is the length of the string.
+- ✅ Single traversal from end to start
+- ✅ No additional memory used
 
-- **Example 2:** <br>
-**Input:** **`s = "   fly me   to   the moon  "`** <br>
-**Output:** **`4`** <br>
-**Explanation:** The last word is **`"moon"`** with length 4.
+### ✅ Advantages
+- Minimal and clean code
+- Extremely efficient for long strings
+- Handles trailing spaces automatically
+- Interview-friendly: **O(1) space solution**
 
-- **Example 3:** <br>
-**Input:** **`s = "luffy is still joyboy"`** <br>
-**Output:** **`6`** <br>
-**Explanation:** The last word is **`"joyboy"`** with length 6.
+### ⚠️ Edge Cases
+- Empty string → returns 0
+- String with only spaces → returns 0
+- Single word → counts correctly
 
-### 📏 Constraints
-- **`1 <= s.length <= 10⁴`**
-- **`s`** contains only English letters and spaces.
-- There is **at least one word** in the string.
-
-### 🎯 Key Takeaway
-This problem checks your understanding of:
-- String handling
-- Ignoring unnecessary spaces
-- Identifying word boundaries
 ---
