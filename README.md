@@ -54,4 +54,13 @@ This problem checks your understanding of:
 - String handling
 - Ignoring unnecessary spaces
 - Identifying word boundaries
+
+## 🧠 Approaches
+
+| **Approach**                        | **Description**                                                                                                                              | **Time Complexity** | **Space Complexity**          | **Pros**                                                                     | **Cons**                                                                                               |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ----------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| [**Forward Iteration with Counters**](https://github.com/madiv9820/Length_of_Last_Word/tree/Approach_01-Two_Pointers) | Traverse the string from start to end. Maintain a counter for the current word, and update the last word length when a space is encountered. | O(n)                | O(1)                          | ✅ Works in-place, minimal memory. <br> ✅ Handles multiple spaces gracefully. | ⚠️ Slightly more code. <br> ⚠️ Logic can be verbose in some languages.                                 |
+| [**Split-based / Tokenization**](https://github.com/madiv9820/Length_of_Last_Word/tree/Approach_02-Word_Extraction)      | Trim leading/trailing spaces, split the string into words, then compute the length of the last word.                                         | O(n)                | O(n) (for the array of words) | ✅ Very readable and straightforward. <br> ✅ Minimal logic required.          | ⚠️ Uses extra memory for the list/array. <br> ⚠️ Slight overhead for long strings.                     |
+| [**Reverse Iteration from End**](https://github.com/madiv9820/Length_of_Last_Word/tree/Approach_03-Reverse_Traversal)      | Start from the string’s end, skip trailing spaces, then count characters until a space or start is reached.                                  | O(n)                | O(1)                          | ✅ Very memory-efficient. <br> ✅ Often the fastest approach.                  | ⚠️ Slightly less intuitive. <br> ⚠️ Edge cases (all spaces or empty string) must be handled carefully. |
+
 ---
