@@ -1,57 +1,40 @@
-# [Length of Last Word 📝](https://leetcode.com/problems/length-of-last-word/description/?envType=study-plan-v2&envId=top-interview-150)
+# 📌 Length of Last Word – Two Pointers Approach
 
-### 📌 Problem Summary
+### 🧠 Problem Statement
 
-You are given a string `s` that contains:
-- English letters (`a–z`, `A–Z`)
-- Spaces `" "`
+Given a string `s` consisting of words and spaces, return the **length of the last word** in the string.
 
-Your task is to return the **length of the last word** in the string.
+A **word** is defined as a maximal substring consisting of non-space characters only.
 
-### 🧠 What is a Word?
+### 💡 Approach – Two Pointers (Single Pass)
 
-A **word** is defined as: *A continuous sequence of non-space characters.*
+We solve this problem using a **single traversal (O(n))** approach with two tracking variables:
+- **`currentWordLength`** → tracks the length of the current word.
+- **`lastWordLength`** → stores the length of the most recently completed word.
 
-In simple terms:
-- Words are separated by spaces.
-- A word does not contain any spaces.
-- The string is guaranteed to have at least one word.
+### 🔍 Core Idea
+1. Traverse the string from left to right.
+2. If the character is **not a space** → increment `currentWordLength`.
+3. If the character **is a space**:
+    - If we were building a word (`currentWordLength > 0`), update `lastWordLength`.
+    - Reset `currentWordLength` to `0`.
+4. After the loop ends:
+    - We may still be inside a word (if string doesn't end with space).
+    - Do one final update.
+5. Return `lastWordLength`.
 
-### 🔍 What You Need to Do
-1. Look at the given string.
-2. Identify the last word (the final group of letters).
-3. Count how many characters it has.
-4. Return that number.
+### 🚀 Why This Works
+- Handles **multiple spaces**
+- Handles **trailing spaces**
+- Uses **constant extra space O(1)**
+- Single traversal → **O(n) time complexity**
 
-**⚠️ Important:**
-- The string may contain **extra spaces at the beginning or end**.
-- There may be **multiple spaces between words**.
-- You should ignore unnecessary spaces.
+### 🧮 Complexity Analysis
+| **Type**  | **Complexity** |
+| ----- | ---------- |
+| Time  | O(n)       |
+| Space | O(1)       |
 
-### 📘 Examples
-- **Example 1:** <br>
-**Input:** **`s = "Hello World"`** <br>
-**Output:** **`5`** <br>
-**Explanation:** The last word is **`"World"`** with length 5.
+Where `n` is the length of the string.
 
-- **Example 2:** <br>
-**Input:** **`s = "   fly me   to   the moon  "`** <br>
-**Output:** **`4`** <br>
-**Explanation:** The last word is **`"moon"`** with length 4.
-
-- **Example 3:** <br>
-**Input:** **`s = "luffy is still joyboy"`** <br>
-**Output:** **`6`** <br>
-**Explanation:** The last word is **`"joyboy"`** with length 6.
-
-### 📏 Constraints
-- **`1 <= s.length <= 10⁴`**
-- **`s`** contains only English letters and spaces.
-- There is **at least one word** in the string.
-
-### 🎯 Key Takeaway
-This problem checks your understanding of:
-- String handling
-- Ignoring unnecessary spaces
-- Identifying word boundaries
 ---
