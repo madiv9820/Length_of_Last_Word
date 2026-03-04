@@ -1,57 +1,88 @@
-# [Length of Last Word 📝](https://leetcode.com/problems/length-of-last-word/description/?envType=study-plan-v2&envId=top-interview-150)
+# 📌 Length of Last Word – Word Extraction Approach
 
-### 📌 Problem Summary
+### 🧠 Problem Statement
 
-You are given a string `s` that contains:
-- English letters (`a–z`, `A–Z`)
-- Spaces `" "`
+Given a string `s` consisting of words and spaces, return the **length of the last word** in the string.
 
-Your task is to return the **length of the last word** in the string.
+A **word** is defined as a maximal substring consisting only of non-space characters.
 
-### 🧠 What is a Word?
+### 💡 Approach – Extract All Words, Then Measure the Last One
 
-A **word** is defined as: *A continuous sequence of non-space characters.*
+Instead of directly computing the last word length, this approach:
 
-In simple terms:
-- Words are separated by spaces.
-- A word does not contain any spaces.
-- The string is guaranteed to have at least one word.
+1. 🔁 Traverses the string character by character
+2. 🧩 Extracts each word manually
+3. 📦 Stores all words in a container
+4. 📐 Returns the length of the last stored word
 
-### 🔍 What You Need to Do
-1. Look at the given string.
-2. Identify the last word (the final group of letters).
-3. Count how many characters it has.
-4. Return that number.
+### 🚀 Algorithm Steps
+#### 1️⃣ Traverse the String
+- Iterate through each character.
+- Skip spaces.
+- When a non-space character is found → start forming a word.
 
-**⚠️ Important:**
-- The string may contain **extra spaces at the beginning or end**.
-- There may be **multiple spaces between words**.
-- You should ignore unnecessary spaces.
+#### 2️⃣ Build Each Word
+- Continue appending characters until:
+    - A space is encountered
+    - OR the string ends
 
-### 📘 Examples
-- **Example 1:** <br>
-**Input:** **`s = "Hello World"`** <br>
-**Output:** **`5`** <br>
-**Explanation:** The last word is **`"World"`** with length 5.
+#### 3️⃣ Store the Word
+- Save the constructed word into:
+    - `char**` (C)
+    - `vector<string>` (C++)
+    - `List[str]` (Python)
 
-- **Example 2:** <br>
-**Input:** **`s = "   fly me   to   the moon  "`** <br>
-**Output:** **`4`** <br>
-**Explanation:** The last word is **`"moon"`** with length 4.
+#### 4️⃣ Return the Last Word Length
+- Access the last stored word.
+- Return its length.
 
-- **Example 3:** <br>
-**Input:** **`s = "luffy is still joyboy"`** <br>
-**Output:** **`6`** <br>
-**Explanation:** The last word is **`"joyboy"`** with length 6.
+### 🛠 Language Implementations
+#### 🅲 
+- Uses dynamic memory allocation (malloc)
+- Stores words in char**
+- Requires manual memory cleanup (free)
 
-### 📏 Constraints
-- **`1 <= s.length <= 10⁴`**
-- **`s`** contains only English letters and spaces.
-- There is **at least one word** in the string.
+#### 🅲++
+- Uses vector<string>
+- Automatic memory management
+- Cleaner syntax than C
 
-### 🎯 Key Takeaway
-This problem checks your understanding of:
-- String handling
-- Ignoring unnecessary spaces
-- Identifying word boundaries
+#### 🐍 Python
+- Uses list of strings
+- Automatic garbage collection
+- Most concise implementation
+
+### 🧮 Complexity Analysis
+| **Complexity** | **Value**                       |
+| ---------- | --------------------------- |
+| ⏱️ Time    | O(n)                        |
+| 📦 Space   | O(n²) (C/C++)               |
+| 📦 Space   | O(n) (Python split version) |
+
+Where `n` is the length of the string.
+
+**Why O(n²) in C/C++?**
+- Allocating space for up to `n` words
+- Each word can be up to length `n`
+
+### ✅ Advantages
+✔ Easy to understand <br>
+✔ Clear separation of words <br>
+✔ Good for learning string parsing <br>
+✔ Demonstrates dynamic memory handling (C)
+
+### ⚠️ Limitations
+❌ Uses unnecessary extra space <br>
+❌ Stores all words when only the last word is needed <br>
+❌ Not optimal for interview settings
+
+### 🎯 Interview Insight
+
+While this solution works correctly, interviewers typically expect:
+- Reverse traversal
+- O(1) extra space
+- No full word storage
+
+This implementation is best categorized as a **brute-force word extraction approach.**
+
 ---
